@@ -12,11 +12,9 @@ import java.net.UnknownHostException;
 public class App {
 
     public static void main(String[] args) throws UnknownHostException {
-        Settings settings = Settings.builder().put("cluster.name", "elasticsearch")
-                                    // .put("node.name", "testmaxime")
-                                    .put("client.transport.sniff", true).build();
 
-        TransportClient client = new PreBuiltTransportClient(settings).addTransportAddress(
+        // Settings settings = Settings.builder().put("http.enabled", true).put("client.transport.sniff", true).build();
+        TransportClient client = new PreBuiltTransportClient(Settings.EMPTY).addTransportAddress(
                 new InetSocketTransportAddress(InetAddress.getByName("127.0.0.1"), 9300));
 
         String json = "{" + "\"user\":\"kimchy\"," + "\"postDate\":\"2013-01-30\"," + "\"message\":\"trying out Elasticsearch\"" + "}";
